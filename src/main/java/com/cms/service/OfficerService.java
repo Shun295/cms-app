@@ -86,10 +86,15 @@ public class OfficerService {
         // Original filename
         String fileName = file.getOriginalFilename();
 
-        // i am creating the path where i will upload the file: destination
-        Path uploadPath =  Paths.get(UPLOAD_LOC);
+        // // i am creating the path where i will upload the file: destination
+        // Path uploadPath =  Paths.get(UPLOAD_LOC);
+        // // Attach the file name to the upload path
+        // Path destinationPath =  uploadPath.resolve(fileName);
+        
+        Path uploadPath =  Paths.get(UPLOAD_LOC).normalize();
         // Attach the file name to the upload path
-        Path destinationPath =  uploadPath.resolve(fileName);
+        Path destinationPath =  uploadPath.resolve(Objects.requireNonNull(file.getOriginalFilename())).normalize();
+
 
         // Copy the original file (Multipart) on to destination upload path
         Files.copy(file.getInputStream(), destinationPath, StandardCopyOption.REPLACE_EXISTING);
