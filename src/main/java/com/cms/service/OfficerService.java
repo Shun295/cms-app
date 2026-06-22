@@ -86,11 +86,7 @@ public class OfficerService {
         // Original filename
         String fileName = file.getOriginalFilename();
 
-        // // i am creating the path where i will upload the file: destination
-        // Path uploadPath =  Paths.get(UPLOAD_LOC);
-        // // Attach the file name to the upload path
-        // Path destinationPath =  uploadPath.resolve(fileName);
-        
+        // i am creating the path where i will upload the file: destination
         Path uploadPath =  Paths.get(UPLOAD_LOC).normalize();
         // Attach the file name to the upload path
         Path destinationPath =  uploadPath.resolve(Objects.requireNonNull(file.getOriginalFilename())).normalize();
